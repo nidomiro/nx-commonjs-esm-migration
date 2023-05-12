@@ -14,7 +14,16 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@nx-commonjs-esm-migration/commonjs": ["libs/commonjs/src/index.ts"],
+      "@nx-commonjs-esm-migration/commonjs-buildable": [
+        "libs/commonjs-buildable/src/index.ts"
+      ],
+      "@nx-commonjs-esm-migration/esm": ["libs/esm/src/index.ts"],
+      "@nx-commonjs-esm-migration/esm-buildable": [
+        "libs/esm-buildable/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
