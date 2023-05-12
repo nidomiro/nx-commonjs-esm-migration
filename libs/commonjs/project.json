@@ -24,6 +24,13 @@
           "codeCoverage": true
         }
       }
+    },
+
+    "type-check": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "tsc --noEmit -p libs/commonjs/tsconfig.lib.json"
+      }
     }
   },
   "tags": []
