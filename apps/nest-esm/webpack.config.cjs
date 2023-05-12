@@ -4,5 +4,10 @@ const { composePlugins, withNx } = require('@nrwl/webpack');
 module.exports = composePlugins(withNx(), (config) => {
   // Update the webpack config as needed here.
   // e.g. `config.plugins.push(new MyPlugin())`
+  config.resolve.extensionAlias = {
+    ...config.resolve.extensionAlias,
+    '.js': ['.ts', '.js'],
+    '.mjs': ['.mts', '.mjs'],
+  };
   return config;
 });

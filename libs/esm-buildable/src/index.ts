@@ -1,1 +1,1 @@
-export * from './lib/esm-buildable.module';
+export * from './lib/esm-buildable.module.js';
