@@ -1,0 +1,13 @@
+diff --git a/node_modules/@nrwl/js/src/executors/node/node.impl.js b/node_modules/@nrwl/js/src/executors/node/node.impl.js
+index f54b220..c506abf 100644
+--- a/node_modules/@nrwl/js/src/executors/node/node.impl.js
++++ b/node_modules/@nrwl/js/src/executors/node/node.impl.js
+@@ -81,7 +81,7 @@ function runProcess(uniqueKey, event, options, mappings) {
+         const hashedKey = JSON.stringify([uniqueKey, ...options.args]);
+         const hashed = hasher.hashArray(execArgv.concat(hashedKey));
+         hashedMap.set(hashedKey, hashed);
+-        const subProcess = (0, child_process_1.fork)((0, devkit_1.joinPathFragments)(__dirname, 'node-with-require-overrides'), options.args, {
++        const subProcess = (0, child_process_1.fork)(event.outfile.endsWith('.mjs') ? event.outfile : ((0, devkit_1.joinPathFragments)(__dirname, 'node-with-require-overrides')), options.args, {
+             execArgv,
+             stdio: 'inherit',
+             env: Object.assign(Object.assign({}, process.env), { NX_FILE_TO_RUN: event.outfile, NX_MAPPINGS: JSON.stringify(mappings) }),

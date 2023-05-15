@@ -12,6 +12,7 @@
         "target": "node",
         "compiler": "tsc",
         "outputPath": "dist/apps/nest-esm",
+        "outputFileName": "main.mjs",
         "main": "apps/nest-esm/src/main.ts",
         "tsConfig": "apps/nest-esm/tsconfig.app.json",
         "assets": ["apps/nest-esm/src/assets"],

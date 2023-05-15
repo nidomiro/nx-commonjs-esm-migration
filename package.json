@@ -2,13 +2,16 @@
   "name": "nx-commonjs-esm-migration",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "postinstall": "patch-package"
+  },
   "private": true,
   "dependencies": {
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
     "axios": "^1.0.0",
+    "camel-case": "^4.1.2",
     "lodash-es": "^4.17.21",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.0.0",
@@ -35,6 +38,7 @@
     "jest": "^29.4.1",
     "jest-environment-node": "^29.4.1",
     "nx": "15.9.2",
+    "patch-package": "^7.0.0",
     "prettier": "^2.6.2",
     "ts-jest": "^29.0.5",
     "ts-node": "10.9.1",

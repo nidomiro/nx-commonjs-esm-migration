@@ -1,5 +1,4 @@
 const { composePlugins, withNx } = require('@nrwl/webpack');
-const util = require('util');
 const nodeExternals = require('webpack-node-externals');
 
 // Nx plugins for webpack.
@@ -16,6 +15,7 @@ const configFunc = composePlugins(withNx(), (config) => {
 
 const configFuncWithOverrides = (config, ctx) => {
   return configFunc(config, ctx).then((config) => {
+
     /*
     Changes here copied from https://github.com/nrwl/nx/issues/7872#issuecomment-997460397
     */
@@ -28,25 +28,27 @@ const configFuncWithOverrides = (config, ctx) => {
       module: true,
       libraryTarget: 'module',
       chunkFormat: 'module',
+      filename: '[name].mjs',
+      chunkFilename: '[name].mjs',
       library: {
-        type: 'module'
+        type: 'module',
       },
       environment: {
-        module: true
-      }
-    }
+        module: true,
+      },
+    };
 
     config.experiments = {
-      outputModule: true
-    }
+      ...config.experiments,
+      outputModule: true,
+    };
 
     config.externals = nodeExternals({
-      importType: 'module'
-    })
+      importType: 'module',
+    });
 
-  return config
-
+    return config;
   });
-}
+};
 
 module.exports = configFuncWithOverrides;

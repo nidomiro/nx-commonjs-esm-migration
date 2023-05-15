@@ -1,7 +1,13 @@
 import { Controller, Get } from '@nestjs/common';
-
 import { AppService } from './app.service.js';
-import { pick } from 'lodash-es';
+import { pick as esPick } from 'lodash-es';
+import { myCommonJSLibFunction, type CommonJSLibFunction } from '@nx-commonjs-esm-migration/commonjs';
+import { myCommonJSBuildableLibFunction, type CommonJSBuildableLibFunction } from '@nx-commonjs-esm-migration/commonjs-buildable';
+import { myESMLibFunction, type ESMLibFunction } from '@nx-commonjs-esm-migration/esm';
+import { myESMBuildableLibFunction, type ESMBuildableLibFunction } from '@nx-commonjs-esm-migration/esm-buildable';
+import { camelCase } from 'camel-case';
+
+
 
 @Controller()
 export class AppController {
@@ -9,9 +15,22 @@ export class AppController {
 
   @Get()
   getData() {
-    return pick({
-      ...this.appService.getData(),
-      message2: 'this should be filtered out',
-    }, 'message');
+
+    
+    return {
+      lodashEsPickMessage: esPick({
+        ...this.appService.getData(),
+        message2: 'this should be filtered out',
+      }, 'message'),
+      commonjsLibImportCamelCase: camelCase('my test string'),
+
+      libs: {
+        myCommonJSLibFunction: myCommonJSLibFunction(),
+        myCommonJSBuildableLibFunction: myCommonJSBuildableLibFunction(),
+        myESMLibFunction: myESMLibFunction(),
+        myESMBuildableLibFunction: myESMBuildableLibFunction(),
+      }
+
+    };
   }
 }
