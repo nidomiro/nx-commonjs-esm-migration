@@ -1,6 +1,4 @@
-import exp from 'constants';
-
-export * from './lib/esm-buildable.module.js';
+export * from './lib/esm-buildable.module';
 
 
 export const myESMBuildableLibFunction = () => {

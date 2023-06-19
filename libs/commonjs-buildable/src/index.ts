@@ -1,5 +1,3 @@
-import { type } from 'os';
-
 export * from './lib/commonjs-buildable.module';
 
 

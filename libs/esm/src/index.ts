@@ -1,4 +1,4 @@
-export * from './lib/esm.module.js';
+export * from './lib/esm.module';
 
 
 export const myESMLibFunction = () => {

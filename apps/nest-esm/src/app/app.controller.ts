@@ -1,5 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service.js';
+import { AppService } from './app.service';
 import { pick as esPick } from 'lodash-es';
 import { myCommonJSLibFunction, type CommonJSLibFunction } from '@nx-commonjs-esm-migration/commonjs';
 import { myCommonJSBuildableLibFunction, type CommonJSBuildableLibFunction } from '@nx-commonjs-esm-migration/commonjs-buildable';
@@ -16,7 +16,7 @@ export class AppController {
   @Get()
   getData() {
 
-    
+
     return {
       lodashEsPickMessage: esPick({
         ...this.appService.getData(),
