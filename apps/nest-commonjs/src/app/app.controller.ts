@@ -1,6 +1,7 @@
 import { Controller, Get } from "@nestjs/common";
 import { pick as commonPick } from 'lodash';
 import { AppService } from "./app.service";
+import { getModuleSystem } from "@nidomiro/node-modulesystem-check";
 
 
 
@@ -17,6 +18,7 @@ export class AppController {
 
     //const  { pick } = await import( "lodash-es" ); // a solution to use esm-only packages in commonjs
     return {
+      moduleSystem: getModuleSystem(),
       // lodashEsPickMessage: esPick({
       //   ...this.appService.getData(),
       //   message2: 'this should be filtered out',

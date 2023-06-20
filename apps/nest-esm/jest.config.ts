@@ -1,11 +1,14 @@
 /* eslint-disable */
+import type { JestConfigWithTsJest } from 'ts-jest'
+
 export default {
   displayName: 'nest-esm',
-  preset: '../../jest.preset.js',
+  preset: '../../jest.preset.mjs',
   testEnvironment: 'node',
   transform: {
-    '^.+\\.[tj]s$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.spec.json' }],
+    '^.+\\.[tj]s$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.spec.json', useESM: true }],
   },
-  moduleFileExtensions: ['ts', 'js', 'html'],
+  //moduleFileExtensions: ['ts', 'mjs', 'js', 'html'],
+  extensionsToTreatAsEsm: ['.ts'],
   coverageDirectory: '../../coverage/apps/nest-esm',
-};
+} satisfies JestConfigWithTsJest;

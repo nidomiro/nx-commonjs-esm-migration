@@ -6,6 +6,7 @@ import { myCommonJSBuildableLibFunction, type CommonJSBuildableLibFunction } fro
 import { myESMLibFunction, type ESMLibFunction } from '@nx-commonjs-esm-migration/esm';
 import { myESMBuildableLibFunction, type ESMBuildableLibFunction } from '@nx-commonjs-esm-migration/esm-buildable';
 import { camelCase } from 'camel-case';
+import { getModuleSystem } from "@nidomiro/node-modulesystem-check";
 
 
 
@@ -18,6 +19,7 @@ export class AppController {
 
 
     return {
+      moduleSystem: getModuleSystem(),
       lodashEsPickMessage: esPick({
         ...this.appService.getData(),
         message2: 'this should be filtered out',
