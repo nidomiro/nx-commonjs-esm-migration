@@ -1,9 +1,9 @@
-import { Test, TestingModule } from "@nestjs/testing";
+import { Test, TestingModule } from '@nestjs/testing';
 
-import { AppController } from "./app.controller";
-import { AppService } from "./app.service";
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 
-describe("AppController", () => {
+describe('AppController', () => {
   let app: TestingModule;
 
   beforeAll(async () => {
@@ -13,10 +13,15 @@ describe("AppController", () => {
     }).compile();
   });
 
-  describe("getData", () => {
-    it('should return "Hello API"', () => {
+  describe('getData', () => {
+    it('should return "Hello API"', async () => {
       const appController = app.get<AppController>(AppController);
-      expect(appController.getData()).toEqual({ message: "Hello API" });
+      expect(await appController.getData()).toEqual({
+        lodashCommonJSPickMessage: {
+          message: 'Hello API',
+        },
+        moduleSystem: 'commonjs',
+      });
     });
   });
 });

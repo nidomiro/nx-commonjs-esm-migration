@@ -1,5 +1,6 @@
 import { Controller, Get } from "@nestjs/common";
 import { pick as commonPick } from 'lodash';
+//import { pick as esPick } from 'lodash-es';
 import { AppService } from "./app.service";
 import { getModuleSystem } from "@nidomiro/node-modulesystem-check";
 
@@ -16,7 +17,7 @@ export class AppController {
      * in the dev-build it works, but if the compiled artifact is run it fails (on http-call), as it is replaced with a require call.
      */
 
-    //const  { pick } = await import( "lodash-es" ); // a solution to use esm-only packages in commonjs
+    //const  { pick: esPick } = await import( "lodash-es" ); // a solution to use esm-only packages in commonjs
     return {
       moduleSystem: getModuleSystem(),
       // lodashEsPickMessage: esPick({
